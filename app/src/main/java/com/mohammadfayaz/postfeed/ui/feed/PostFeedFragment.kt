@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.mohammadfayaz.postfeed.data.models.posts.PostsResponse
 import com.mohammadfayaz.postfeed.databinding.FragmentPostFeedBinding
+import com.mohammadfayaz.postfeed.ui.adapter.posts.PostListAdapter
 import com.mohammadfayaz.postfeed.utils.ViewEvent
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -17,6 +19,8 @@ class PostFeedFragment : Fragment() {
 
   private val viewModel: PostFeedViewModel by viewModels()
   private lateinit var binding: FragmentPostFeedBinding
+
+  private lateinit var adapter: PostListAdapter
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,7 @@ class PostFeedFragment : Fragment() {
         }
         is ViewEvent.Success<*> -> {
 //          Timber.d(it.data.toString())
+          adapter.submitList( (it.data as PostsResponse).posts)
           idle()
         }
       }
@@ -60,7 +65,10 @@ class PostFeedFragment : Fragment() {
   }
 
   private fun registerViewEvents() {
-
+    adapter = PostListAdapter()
+    binding.apply {
+      recyclerView.adapter = adapter
+    }
   }
 
   companion object {
