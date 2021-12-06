@@ -19,14 +19,14 @@
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This is post's title" />
+            android:text="@string/this_is_post_s_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/authorNameTextView"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anonymous" />
+            android:text="@string/anonymous" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bodyTextView"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4sp"
-            android:text="Here goes the body of the post" />
+            android:text="@string/here_goes_the_body_of_the_post" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

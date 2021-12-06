@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/layout/fragment_post_feed.xml" value="0.2545289855072464" />
+        <entry key="app/src/main/res/layout/layout_loading_indicator.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/layout/layout_post_item.xml" value="0.5" />
       </map>
     </option>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PostFeed</string>
+    <string name="this_is_post_s_title">This is post\'s title</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="here_goes_the_body_of_the_post">Here goes the body of the post</string>
+    <string name="unable_to_load_data">Unable to load data</string>
+    <string name="retry">Retry</string>
 </resources>

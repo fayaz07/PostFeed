@@ -23,19 +23,6 @@ class PostFeedViewModel @Inject constructor(private val repo: PostFeedRepo) : Vi
   private val _viewState = MutableLiveData<ViewEvent>()
   val viewEvents: LiveData<ViewEvent> = _viewState
 
-  init {
-    fetchPosts()
-  }
+  fun getPaginatedFlow() = repo.getPaginatedFlow()
 
-  private fun fetchPosts() {
-    viewModelScope.launch {
-      _viewState.load()
-      try {
-        val response = repo.fetchPosts()
-        _viewState.success(response.body() as PostsResponse,"Fetched posts", FETCHED_POSTS)
-      }catch (e: Exception){
-        _viewState.error(e.localizedMessage, FAILED_TO_FETCH_POSTS, null)
-      }
-    }
-  }
 }

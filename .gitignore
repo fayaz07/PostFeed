@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/java/com/mohammadfayaz/postfeed/data/db/
+/app/src/main/java/com/mohammadfayaz/postfeed/di/DatabaseModule.kt
