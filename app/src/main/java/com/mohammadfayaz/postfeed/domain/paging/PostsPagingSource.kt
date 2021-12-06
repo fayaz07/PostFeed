@@ -29,7 +29,7 @@ class PostsPagingSource(
         val list = mutableListOf<PostModel>()
 
         val response = getItems(currentPage)
-        delay(3000)
+//        delay(3000)
         if(response.success) {
           response.data?.let { list.addAll(it) }
           Timber.d("Sending ${list.size} posts")

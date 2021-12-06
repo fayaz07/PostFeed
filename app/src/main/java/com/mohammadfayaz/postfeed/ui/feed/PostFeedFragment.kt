@@ -39,11 +39,19 @@ class PostFeedFragment : Fragment() {
     return binding.root
   }
 
+  private fun showErrorViews(){
+    binding.errorViewLayout.visibility = View.VISIBLE
+  }
+
+  private fun hideErrorViews(){
+    binding.errorViewLayout.visibility = View.GONE
+  }
+
   private fun addObservers() {
 
     lifecycleScope.launch {
       viewModel.getPaginatedFlow().collect {
-//        idle()
+        hideErrorViews()
         adapter.submitData(it)
       }
     }
@@ -51,7 +59,11 @@ class PostFeedFragment : Fragment() {
     adapter.addLoadStateListener { loadStates ->
       binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
       if (loadStates.refresh is LoadState.Error){
-        Snackbar.make(binding.root, "There is an error", Snackbar.LENGTH_SHORT).show()
+        showErrorViews()
+        binding.errorTextView.text = (loadStates.refresh as LoadState.Error).error.localizedMessage
+//        Snackbar.make(binding.root, "There is an error", Snackbar.LENGTH_SHORT).show()
+      }else{
+        hideErrorViews()
       }
     }
 
@@ -92,7 +104,14 @@ class PostFeedFragment : Fragment() {
         header = LoadingIndicatorAdapter { adapter.retry() },
         footer = LoadingIndicatorAdapter { adapter.retry() }
       )
+
+      retryButton.setOnClickListener {
+        adapter.retry()
+      }
+
     }
+
+
   }
 
   companion object {
